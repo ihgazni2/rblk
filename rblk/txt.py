@@ -52,12 +52,19 @@ class Parser():
         from_lv = 0
         rslt = self.lvsrch4blk_fromto(tag,from_lv,to_lv)
         return(rslt)
+    def lvsrch4blk(self,tag,lv):
+        rslt = self.lvsrch4blk_fromto(tag,lv,lv+1)
+        return(rslt)
     def lvsrch4txt_fromto(self,from_lv,to_lv):
         return(self.lvsrch4blk_fromto("null",from_lv,to_lv))
     def lvsrch4txt_from(self,from_lv):
         return(self.lvsrch4blk_from("null",from_lv))
     def lvsrch4txt_to(self,to_lv):
         return(self.lvsrch4blk_to("null",to_lv))
+    def lvsrch4txt(self,lv):
+        rslt = self.lvsrch4blk_fromto("null",lv,lv+1)
+        return(rslt)
+
 
 
 
