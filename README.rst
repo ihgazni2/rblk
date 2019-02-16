@@ -17,9 +17,52 @@ License
 - MIT
 
 
+Examples
+--------
+
+- *code-string*
+
+    ::
+        
+        from rblk.txt import Parser
+        
+        txt = '''(defun last-state (rewindable)\
+        (let((size (rewind-count rewindable)))\
+        (if(zerop size)(values nil nil)\
+        (values (aref (rewind-store rewindable) (1- size)) t))))'''
+        
+        tag_pairs = '()'
+        
+        p = Parser(txt,tag_pairs)
+        dummy = [print(each) for each in p.srch4txt()]
+        dummy = [print(each) for each in p.text_mat]
+        
+.. image:: ./docs/images/lisp.0.png
+.. image:: ./docs/images/lisp.1.png
+
+
+- *self-defined-structure*
+
+    ::
+        
+        from rblk.txt import Parser
+        txt = '''<0x1x2x<3x4>x[5x6x{{{7}}}]x@9#10#@>'''
+        
+        tag_pairs = '<>[]{}@@##'
+        
+        p = Parser(txt,tag_pairs)
+        dummy = [print(each) for each in p.text_mat]
+        dummy = [print(each) for each in p.srch4txt()]
+        
+
+.. image:: ./docs/images/self_defined_struc.0.png
+
 
 Quickstart
 ----------
+
+
+        
 
 - *init Parser with tag_pairs*
     
