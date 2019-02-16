@@ -108,7 +108,7 @@ Quickstart
         ['ddd', 'ddd']
         >>>
 
-- **
+- *chinese-tag_pairs*
 
     ::
 
