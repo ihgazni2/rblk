@@ -1,6 +1,7 @@
 import rblk.mat.engine as mtmt
 from rblk.tag.engine import * 
-
+import elist.elist as elel
+import edict.edict as eded
 
 ROOT = "root"
 IMPLICIT = "null"
@@ -12,7 +13,22 @@ DFLT_PAIRS = {
     "'":"'",
     '"':'"'
 }
+#####
 
+def str2pairs(s):
+    arr = list(s)
+    kl = elel.select_evens(arr)
+    vl = elel.select_odds(arr)
+    d = eded.kvlist2d(kl,vl)
+    return(d)
+
+def pairs2str(d):
+    kl,vl =eded.d2kvlist(d)
+    arr = elel.interleave(kl,vl)
+    s = elel.join(arr,"")
+    return(d)
+
+#####
 def get_tag_from_loc_stack(d,which):
     try:
         tag = mtmt._get_via_loc(d['mat'],d['loc_stack'][which])['tag']
