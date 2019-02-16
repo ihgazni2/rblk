@@ -38,11 +38,11 @@ class Parser():
         return(rslt)
     def lvsrch4txt_from(self,tag,from_lv):
         to_lv = self.depth
-        rslt = self.lvsrch4txt_fromto(tag,,from_lv,to_lv)
+        rslt = self.lvsrch4txt_fromto(tag,from_lv,to_lv)
         return(rslt)
     def lvsrch4txt_to(self,tag,to_lv):
         from_lv = 0
-        rslt = self.lvsrch4txt_fromto(tag,,from_lv,to_lv)
+        rslt = self.lvsrch4txt_fromto(tag,from_lv,to_lv)
         return(rslt)
 
 
