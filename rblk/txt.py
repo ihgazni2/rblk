@@ -1,4 +1,4 @@
-import rblkb.scanner.txt as txtscaner
+import rblk.scanner.txt as txtscaner
 import elist.elist as elel
 
 class Parser():
