@@ -145,6 +145,15 @@ def final_exopen(d):
     print("some opened tag not closed,please check the params_dict['mat'] whose ei is None")
     return(d)
 
+def final_imopen(d):
+    cursor,input_symbol,curr_state,curr_depth,curr_breadth,loc_stack,state_stack,mat,tag_pairs = dcd_params(d)
+    curr_ele = mtmt._get_via_loc(mat,loc_stack[-1])
+    curr_ele['ei'] = d['cursor'] + 1 
+    loc_stack.pop(-1)
+    state_stack.pop(-1)
+    d = encd_params(cursor,input_symbol,curr_state,curr_depth,curr_breadth,loc_stack,state_stack,mat,tag_pairs)
+    return(d)
+
 #####################
 #####################
 
@@ -167,7 +176,7 @@ def get_descmat(txt,tag_pairs=tgtg.DFLT_PAIRS):
     machine.add("EXOPEN",tgtg.is_lrtag_and_not_rtag_of,exopen,"EXOPEN")
     machine.add("EXOPEN",tgtg.is_rtag_only_and_not_rtag_of,imopen,"IMOPEN")
     machine.add("EXOPEN",tgtg.is_not_tag,imopen,"IMOPEN")
-    machine.add_final("IMOPEN",imclose)
+    machine.add_final("IMOPEN",final_imopen)
     machine.add_final("EXOPEN",final_exopen)
     machine.add_final("INIT",None)
     machine.scan()
