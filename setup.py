@@ -1,4 +1,15 @@
 from setuptools import setup, find_packages
+
+requirements = [
+    'elist',
+    'edict'
+]
+
+setup_requirements = [
+    'elist',
+    'edict'
+]
+
 setup(
       name="rblk",
       version = "0.4",

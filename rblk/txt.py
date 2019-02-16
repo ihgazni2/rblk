@@ -1,10 +1,10 @@
-import scanner.txt
+import rblkb.scanner.txt as txtscaner
 import elist.elist as elel
 
 class Parser():
     def __init__(self,txt,tag_pairs):
         self.txt = txt
-        self.descmat = scanner.txt.get_descmat(txt)
+        self.descmat = txtscaner.get_descmat(txt)
         self.depth = len(descmat)
         self.breadths = elel.mapv(self.descmat,lambda layer:len(layer))
         self.text_mat = elel.matrix_map(self.descmat,lambda v,r,c:txt[v['si']:v['ei']])
