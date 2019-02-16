@@ -19,7 +19,7 @@ class Parser():
             for j in range(self.breadths[i]):
                 ele_tag = self.descmat[i][j]['tag']
                 if(tag == ele_tag):
-                    loc = [i][j]
+                    loc = [i,j]
                     rslt.append(loc)
         return(rslt)
     def srch4blk(self,tag):
