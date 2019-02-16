@@ -9,7 +9,7 @@ class Parser():
             pass
         else:
             tag_pairs = tgtg.str2pairs(tag_pairs)
-        self.descmat = txtscaner.get_descmat(txti,tag_pairs=tag_pairs)
+        self.descmat = txtscaner.get_descmat(txt,tag_pairs=tag_pairs)
         self.depth = len(descmat)
         self.breadths = elel.mapv(self.descmat,lambda layer:len(layer))
         self.text_mat = elel.matrix_map(self.descmat,lambda v,r,c:txt[v['si']:v['ei']])
