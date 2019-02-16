@@ -37,7 +37,7 @@ class Parser():
         from_lv = elel.uniform_index(from_lv,self.depth)
         to_lv = elel.uniform_index(to_lv,self.depth)
         rslt = []
-        for i in range(from_lv,self.depth):
+        for i in range(from_lv,to_lv):
             for j in range(self.breadths[i]):
                 ele_tag = self.descmat[i][j]['tag']
                 if(tag == ele_tag):
@@ -46,11 +46,11 @@ class Parser():
         return(rslt)
     def lvsrch4blk_from(self,tag,from_lv):
         to_lv = self.depth
-        rslt = self.lvsrch4txt_fromto(tag,from_lv,to_lv)
+        rslt = self.lvsrch4blk_fromto(tag,from_lv,to_lv)
         return(rslt)
     def lvsrch4blk_to(self,tag,to_lv):
         from_lv = 0
-        rslt = self.lvsrch4txt_fromto(tag,from_lv,to_lv)
+        rslt = self.lvsrch4blk_fromto(tag,from_lv,to_lv)
         return(rslt)
     def lvsrch4txt_fromto(self,from_lv,to_lv):
         return(self.lvsrch4blk_fromto("null",from_lv,to_lv))
