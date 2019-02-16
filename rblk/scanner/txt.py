@@ -164,8 +164,12 @@ def get_descmat(txt,tag_pairs=tgtg.DFLT_PAIRS):
     machine = fsm.FSM(stream=stream,params_dict=params_dict,init_state=init_state)
     machine.add("INIT",tgtg.is_ltag_only,exopen,"EXOPEN")
     machine.add("INIT",tgtg.is_rtag_of,exclose,"INIT")
-    machine.add("INIT",tgtg.is_rtag_and_not_rtag_of,imopen,"IMOPEN")
+    #############
+    machine.add("INIT",tgtg.is_lrtag_and_not_rtag_of,exopen,"EXOPEN")
+    machine.add("INIT",tgtg.is_rtag_only_and_not_rtag_of,imopen,"IMOPEN")
     machine.add("INIT",tgtg.is_not_tag,imopen,"IMOPEN")
+    ###########
+    ###########
     machine.add("IMOPEN",tgtg.is_ltag_only,fsm.pipeline([imclose,exopen]),"EXOPEN")
     machine.add("IMOPEN",tgtg.is_rtag_of_sec,fsm.pipeline([imclose,exclose]),"INIT")
     machine.add("IMOPEN",tgtg.is_lrtag_and_not_rtag_of_sec,fsm.pipeline([imclose,exopen]),"EXOPEN")
