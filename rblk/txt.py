@@ -22,7 +22,7 @@ class Parser():
                     loc = [i][j]
                     rslt.append(loc)
         return(rslt)
-    def srch4txt(self,tag):
+    def srch4blk(self,tag):
         rslt = []
         for i in range(self.depth):
             for j in range(self.breadths[i]):
@@ -31,7 +31,9 @@ class Parser():
                     txt = self.text_mat[i][j]
                     rslt.append(txt)
         return(rslt)
-    def lvsrch4txt_fromto(self,tag,from_lv,to_lv):
+    def srch4txt(self):
+        return(self.srch4blk("null"))
+    def lvsrch4blk_fromto(self,tag,from_lv,to_lv):
         from_lv = elel.uniform_index(from_lv,self.depth)
         to_lv = elel.uniform_index(to_lv,self.depth)
         rslt = []
@@ -40,15 +42,23 @@ class Parser():
                 ele_tag = self.descmat[i][j]['tag']
                 if(tag == ele_tag):
                     txt = self.text_mat[i][j]
+                    rslt.append(txt)
         return(rslt)
-    def lvsrch4txt_from(self,tag,from_lv):
+    def lvsrch4blk_from(self,tag,from_lv):
         to_lv = self.depth
         rslt = self.lvsrch4txt_fromto(tag,from_lv,to_lv)
         return(rslt)
-    def lvsrch4txt_to(self,tag,to_lv):
+    def lvsrch4blk_to(self,tag,to_lv):
         from_lv = 0
         rslt = self.lvsrch4txt_fromto(tag,from_lv,to_lv)
         return(rslt)
+    def lvsrch4txt_fromto(self,from_lv,to_lv):
+        return(self.lvsrch4blk_fromto("null",from_lv,to_lv))
+    def lvsrch4txt_from(self,from_lv):
+        return(self.lvsrch4blk_from("null",from_lv))
+    def lvsrch4txt_to(self,to_lv):
+        return(self.lvsrch4blk_to("null",to_lv))
+
 
 
 
